@@ -476,7 +476,7 @@ export default function BendochProfessional() {
             <section id="team" className="py-32 px-6">
                 <div className="max-w-7xl mx-auto">
                     <SectionTitle
-                        title="The Bendoch Six"
+                        title="The Bendoch"
                         subtitle="A unique blend of low-level wizards, hardware strategists, and high-level architects."
                     />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
