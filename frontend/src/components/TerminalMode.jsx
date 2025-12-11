@@ -1,36 +1,20 @@
-import React, { useState, useEffect, useRef } from "react";
-import ProjectsBlock from "./components/ProjectsBlock";
-import { INITIAL_STATE } from "./mockdata";
+import { useState, useRef } from "react";
 import {
-    Terminal,
-    Cpu,
-    Zap,
     Wifi,
     Battery,
-    Command,
-    GitBranch,
-    Folder,
-    FileCode,
-    User,
-    Server,
-    Activity,
     X,
-    Minus,
-    Square,
-    ChevronRight,
-    Hash,
-    Code,
-    Power,
     Github,
-    Linkedin,
     Mail,
-    ExternalLink,
-    Box,
 } from "lucide-react";
-import FileTree from "./components/FileTree";
-import FounderCard from "./components/FounderCard";
-import ServicesBlock from "./components/ServiceBlock";
-import StatusBar from "./components/StatusBar";
+
+/* --- FIXED IMPORTS --- */
+import ProjectsBlock from "./ProjectsBlock";      // Removed ./components/
+import { INITIAL_STATE } from "../mockdata";      // Changed ./ to ../ (Go up one level)
+import FileTree from "./FileTree";                // Removed ./components/
+import FounderCard from "./FounderCard";          // Removed ./components/
+import ServicesBlock from "./ServiceBlock";       // Removed ./components/
+import StatusBar from "./StatusBar";              // Removed ./components/
+
 export default function BendochTerminal() {
     const [activeTab, setActiveTab] = useState("home");
     const [command, setCommand] = useState("");
@@ -181,12 +165,12 @@ export default function BendochTerminal() {
                                         </p>
                                         <p>
                                             <span className="text-[#bb9af7] font-bold">Mission:</span>{" "}
-                                            "G#nd Masti"
+                                            "Kernel Panic & Chill"
                                         </p>
 
                                         <div className="flex gap-4 mt-6">
                                             <a
-                                                href="https://github.com/imlearning2024"
+                                                href="https://github.com/Bendochz"
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className="px-4 py-2 bg-[#1f2335] border border-[#414868] text-[#7aa2f7] rounded flex items-center gap-2 hover:bg-[#292e42] transition-colors"
@@ -291,6 +275,7 @@ export default function BendochTerminal() {
         </div>
     );
 }
+
 function PlusIcon() {
     return (
         <svg

@@ -9,14 +9,15 @@ export const INITIAL_STATE = {
             id: "ajay",
             name: "Ajay Giri",
             os: "macOS/Linux",
-            role: "Full Stack & Systems", // Reflected his "Dual Nature"
-            skills: ["RUST", "NEXT.JS", "SYSTEM DESIGN", "COMPILERS"],
-            desc: "Full-Stack dev with a Systems heart. Bridging high-level web with low-level Rust.",
+            role: "Full Stack & Systems",
+            skills: ["RUST", "NEXT.JS", "SYSTEM DESIGN", "COMPILERS", "DOCKER"],
+            desc: "Full-Stack developer with a Systems heart. Bridging high-level Web with low-level Rust.",
             status: "Compiling...",
             socials: {
                 github: "https://github.com/imajaygiri",
                 email: "mailto:sinexcosecx@gmail.com",
                 linkedin: "https://www.linkedin.com/in/ajay-giri-8a8604380/",
+                instagram: "https://www.instagram.com/_ajaygiri",
             }
         },
         {
@@ -24,11 +25,11 @@ export const INITIAL_STATE = {
             name: "Vatsal Jaiswal",
             os: "Arch Linux",
             role: "Systems Programmer",
-            skills: ["C", "RISC-V", "OS DEV", "VERILOG"],
-            desc: "The Kernel Hacker. Designed a custom RISC-V compatible core and shell.",
-            status: "Debugging Kernel",
+            skills: ["C", "ASSEMBLY", "OS DEV", "GDB", "LINUX KERNEL"],
+            desc: "Low-level specialist. Creator of custom Shells, Mini CPUs, and GDB implementations.",
+            status: "Debugging...",
             socials: {
-                github: "https://github.com/Vatsalj17/",
+                github: "https://github.com/Vatsalj17",
                 email: "mailto:vatsaljaiswal17@gmail.com",
                 linkedin: "https://www.linkedin.com/in/vatsalj17/"
             }
@@ -37,10 +38,10 @@ export const INITIAL_STATE = {
             id: "aditya_m",
             name: "Aditya Mahore",
             os: "macOS",
-            role: "Game Dev & Graphics", // Updated per your input
-            skills: ["C++", "JAVA", "OPENGL", "GAME PHYSICS"],
-            desc: "Building 2D adventure games in Java and porting engines to C++.", 
-            status: "Rendering",
+            role: "Game Dev & Graphics",
+            skills: ["C++", "JAVA", "OPENGL", "GAME PHYSICS", "SPRING BOOT"],
+            desc: "The Graphics Engine. Building 2D adventure games in Java and porting engines to C++.",
+            status: "Rendering...",
             socials: {
                 github: "https://github.com/adityacore20",
                 email: "mailto:adityamahore013@gmail.com",
@@ -52,9 +53,9 @@ export const INITIAL_STATE = {
             name: "Harsh Raj Singh",
             os: "Arch Linux",
             role: "Embedded Engineer",
-            skills: ["EMBEDDED C", "PCB DESIGN", "IOT", "RTOS"],
-            desc: "The Hardware Bridge. Translating software logic into voltage on custom PCBs.",
-            status: "Soldering",
+            skills: ["EMBEDDED C", "VERILOG", "RTOS", "PCB DESIGN"],
+            desc: "The Hardware Interface. Translating software logic into voltage on custom PCBs.",
+            status: "Soldering...",
             socials: {
                 github: "https://github.com/hrs-temp",
                 email: "mailto:harsh@bendoch.com", 
@@ -65,9 +66,9 @@ export const INITIAL_STATE = {
             id: "aditya_d",
             name: "Aditya Dagar",
             os: "Linux/Win",
-            role: "Android & ML Eng", // Updated per your input
-            skills: ["KOTLIN", "ANDROID", "TENSORFLOW LITE", "PYTHON"],
-            desc: "Native Android specialist diving deep into on-device Machine Learning.",
+            role: "Android & ML Eng",
+            skills: ["KOTLIN", "ANDROID", "TENSORFLOW LITE", "PYTHON", "JETPACK"],
+            desc: "Native Android specialist diving deep into on-device Machine Learning models.",
             status: "Training Model",
             socials: {
                 github: "https://github.com/adidroid",
@@ -80,9 +81,9 @@ export const INITIAL_STATE = {
             name: "Akshit Kohli",
             os: "macOS",
             role: "Cloud & Web Ops",
-            skills: ["AWS", "DOCKER", "REACT", "LINUX"],
-            desc: "The Infrastructure. Orchestrating scalable cloud deployments.",
-            status: "Deploying",
+            skills: ["AWS", "DOCKER", "REACT", "PYTHON", "LINUX"],
+            desc: "The Infrastructure. Orchestrating scalable cloud deployments and web systems.",
+            status: "Deploying...",
             socials: {
                 github: "https://github.com/Akshit-kohli",
                 email: "mailto:akshit.kohli2006@gmail.com",
@@ -90,38 +91,55 @@ export const INITIAL_STATE = {
             }
         },
     ],
+    // UPDATED PROJECTS LIST
     projects: [
         {
-            id: "cli-tool",
-            name: "Repo Manager CLI",
-            lang: "Rust",
+            id: "hls-engine",
+            name: "HLS Video Engine",
+            lang: "Node.js/FFmpeg",
             author: "Ajay Giri",
-            desc: "A high-performance terminal tool to manage git repositories.",
-            url: "https://github.com/imajaygiri"
+            desc: "Scalable video streaming backend with adaptive bitrate HLS transcoding.",
+            url: "https://github.com/imajaygiri/video_streaming"
         },
         {
-            id: "mini-cpu",
-            name: "RISC-V Simulator",
-            lang: "Verilog/C",
+            id: "vsh-shell",
+            name: "VSH - Unix Shell",
+            lang: "C/Syscalls",
             author: "Vatsal Jaiswal",
-            desc: "A custom instruction set architecture implementation.",
-            url: "https://github.com/Vatsalj17/"
+            desc: "POSIX-compliant shell with pipelines, I/O redirection, and job control.",
+            url: "https://github.com/Vatsalj17/vsh"
         },
         {
-            id: "adventure-game",
-            name: "2D Adventure Game", // Specific update for Mahore
-            lang: "Java",
-            author: "Aditya Mahore",
-            desc: "A complete 2D game with custom physics and rendering logic.",
-            url: "https://github.com/adityacore20"
-        },
-        {
-            id: "iron-health",
-            name: "Iron Health Tracker",
-            lang: "Kotlin/ML",
+            id: "native-chan",
+            name: "Native Chan Client",
+            lang: "Kotlin/Compose",
             author: "Aditya Dagar",
-            desc: "Native Android app integrated with predictive health models.",
-            url: "https://github.com/adidroid"
+            desc: "High-performance Android client for imageboards with pagination.",
+            url: "https://github.com/adidroid/4chan"
+        },
+        {
+            id: "adventure-engine",
+            name: "2D Adventure Engine",
+            lang: "Java/OpenGL",
+            author: "Aditya Mahore",
+            desc: "Complete 2D game framework and adventure game built from scratch.",
+            url: "https://github.com/adityacore20/Adventure-Game"
+        },
+        {
+            id: "smart-circuit",
+            name: "Smart Circuit Controller",
+            lang: "Embedded C/IoT",
+            author: "Harsh Raj Singh",
+            desc: "IoT based circuit controller for home automation and energy efficiency.",
+            url: "https://github.com/hrs-temp"
+        },
+        {
+            id: "cloud-drive",
+            name: "Cloud Drive System",
+            lang: "HTML/CSS",
+            author: "Akshit Kohli",
+            desc: "Responsive file storage interface clone inspired by Google Drive.",
+            url: "https://github.com/Akshit-kohli"
         }
     ],
     files: [

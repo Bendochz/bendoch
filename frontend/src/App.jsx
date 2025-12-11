@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import BendochTerminal from "./components/TerminalMode"; // Ensure this matches your renamed file
 import {
     Menu,
     X,
@@ -17,17 +18,18 @@ import {
     Zap,
     ExternalLink,
     User,
+    TerminalSquare 
 } from "lucide-react";
 
 /* --------------------------------------------------------------------------------
-   DATA CONFIGURATION (Updated: Dec 11)
+   DATA CONFIGURATION
    -------------------------------------------------------------------------------- */
 
 const TEAM = [
     {
         id: "ajay",
         name: "Ajay Giri",
-        role: "Full Stack & Systems", // Updated per your "Heart of Systems" note
+        role: "Full Stack & Systems",
         desc: "Full-Stack developer with a Systems heart. Bridging high-level Web with low-level Rust.",
         skills: ["Rust", "Next.js", "System Design", "Compilers", "Docker"],
         socials: {
@@ -52,7 +54,7 @@ const TEAM = [
     {
         id: "aditya_m",
         name: "Aditya Mahore",
-        role: "Game Dev & Graphics", // Updated: C++ & Java Game
+        role: "Game Dev & Graphics",
         desc: "The Graphics Engine. Building 2D adventure games in Java and porting engines to C++.",
         skills: ["C++", "Java", "OpenGL", "Game Physics", "Spring Boot"],
         socials: {
@@ -68,7 +70,7 @@ const TEAM = [
         desc: "The Hardware Interface. Translating software logic into voltage on custom PCBs.",
         skills: ["Embedded C", "Verilog", "RTOS", "PCB Design", "Arch Linux"],
         socials: {
-            github: "https://github.com/hrs-temp", // Needs to upload photos!
+            github: "https://github.com/hrs-temp",
             email: "mailto:harsh@bendoch.com", 
             linkedin: "https://www.linkedin.com/in/harsh-raj-singh-50379630a/",
         },
@@ -76,7 +78,7 @@ const TEAM = [
     {
         id: "aditya_d",
         name: "Aditya Dagar",
-        role: "Android & ML Eng", // Updated: ML + Android
+        role: "Android & ML Eng",
         desc: "Native Android specialist diving deep into on-device Machine Learning models.",
         skills: ["Kotlin", "Android", "TensorFlow Lite", "Python", "Jetpack"],
         socials: {
@@ -88,7 +90,7 @@ const TEAM = [
     {
         id: "akshit",
         name: "Akshit Kohli",
-        role: "Cloud & Web Ops", // Fixed: Matches his skills
+        role: "Cloud & Web Ops",
         desc: "The Infrastructure. Orchestrating scalable cloud deployments and web systems.",
         skills: ["AWS", "Docker", "React", "Python", "Linux"],
         socials: {
@@ -102,35 +104,39 @@ const TEAM = [
 const PROJECTS = [
     {
         id: 1,
-        title: "Repo Manager CLI",
-        desc: "A high-performance Rust terminal tool to manage git repositories.",
+        title: "HLS Video Engine",
+        desc: "A scalable video streaming backend with automated FFmpeg transcoding, adaptive bitrate HLS, and JWT auth.",
         author: "Ajay Giri",
-        tech: "Rust, Clap, Systems",
-        category: "DevOps",
+        tech: "Node.js, FFmpeg, HLS, MongoDB",
+        category: "Backend Systems",
+        url: "https://github.com/imajaygiri/video_streaming" 
     },
     {
         id: 2,
-        title: "RISC-V Simulator",
-        desc: "A custom instruction set architecture implementation and simulation.",
+        title: "VSH - Unix Shell",
+        desc: "A POSIX-compliant custom Shell written in C. Features process handling, signals, pipelines, and I/O redirection.",
         author: "Vatsal Jaiswal",
-        tech: "Verilog, C, Assembly",
-        category: "Hardware",
+        tech: "C, Syscalls, Linux API",
+        category: "Systems",
+        url: "https://github.com/Vatsalj17/vsh"
     },
     {
         id: 3,
-        title: "Iron Health Tracker",
-        desc: "Native Android app integrated with predictive health machine learning models.",
+        title: "Native Chan Client",
+        desc: "A high-performance Android application built with Kotlin and Jetpack Compose for imageboards.",
         author: "Aditya Dagar",
-        tech: "Kotlin, ML, Jetpack",
+        tech: "Kotlin, Jetpack Compose",
         category: "Mobile",
+        url: "https://github.com/adidroid/4chan"
     },
     {
-        id: "game-eng", // Changed ID to avoid conflict
-        title: "2D Adventure Game",
-        desc: "A complete 2D game with custom physics and rendering logic.",
+        id: 4,
+        title: "2D Adventure Engine",
+        desc: "A complete 2D game framework and adventure game built from scratch in Java.",
         author: "Aditya Mahore",
-        tech: "Java, LWJGL, OpenGL",
+        tech: "Java, Physics, OOP",
         category: "Game Dev",
+        url: "https://github.com/adityacore20/Adventure-Game"
     },
     {
         id: 5,
@@ -139,7 +145,17 @@ const PROJECTS = [
         author: "Harsh Raj Singh",
         tech: "Embedded C, IoT, PCB",
         category: "IoT",
+        url: "https://github.com/hrs-temp" 
     },
+    {
+        id: 6,
+        title: "Cloud Drive System",
+        desc: "A responsive file storage interface inspired by Google Drive.",
+        author: "Akshit Kohli",
+        tech: "HTML, CSS, Web",
+        category: "Web",
+        url: "https://github.com/Akshit-kohli" 
+    }
 ];
 
 const SERVICES = [
@@ -169,7 +185,7 @@ const SERVICES = [
    COMPONENTS
    -------------------------------------------------------------------------------- */
 
-const Navbar = () => {
+const Navbar = ({ onToggleTerminal }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -201,7 +217,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex gap-8 text-sm font-medium text-slate-300">
+                <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
                     {["About", "Team", "Services", "Projects", "Contact"].map((item) => (
                         <button
                             key={item}
@@ -211,6 +227,15 @@ const Navbar = () => {
                             {item}
                         </button>
                     ))}
+                    
+                    {/* TERMINAL TOGGLE BUTTON */}
+                    <button 
+                        onClick={onToggleTerminal}
+                        className="flex items-center gap-2 px-3 py-1 bg-slate-800 border border-emerald-500/30 text-emerald-400 rounded hover:bg-emerald-500 hover:text-black transition-all"
+                    >
+                        <TerminalSquare size={16} />
+                        <span className="font-mono text-xs">TERM_MODE</span>
+                    </button>
                 </div>
 
                 {/* CTA Button */}
@@ -244,6 +269,11 @@ const Navbar = () => {
                             {item}
                         </button>
                     ))}
+                    <button 
+                        onClick={() => { setIsOpen(false); onToggleTerminal(); }}
+                        className="text-left text-lg text-emerald-400 font-mono"
+                    >_ TERMINAL MODE
+                    </button>
                 </div>
             )}
         </nav>
@@ -296,53 +326,25 @@ const TeamCard = ({ member }) => (
                 ))}
             </div>
 
-            {/* Socials - Dynamic Loop */}
+            {/* Socials */}
             <div className="flex gap-4 pt-4 border-t border-white/5">
                 {member.socials.github && (
-                    <a
-                        href={member.socials.github}
-                        className="text-slate-500 hover:text-white transition-colors"
-                    >
+                    <a href={member.socials.github} target="_blank" rel="noreferrer" className="text-slate-500 hover:text-white transition-colors">
                         <Github size={18} />
                     </a>
                 )}
                 {member.socials.linkedin && (
-                    <a
-                        href={member.socials.linkedin}
-                        className="text-slate-500 hover:text-blue-400 transition-colors"
-                    >
+                    <a href={member.socials.linkedin} target="_blank" rel="noreferrer" className="text-slate-500 hover:text-blue-400 transition-colors">
                         <Linkedin size={18} />
                     </a>
                 )}
-                {member.socials.twitter && (
-                    <a
-                        href={member.socials.twitter}
-                        className="text-slate-500 hover:text-sky-400 transition-colors"
-                    >
-                        <Twitter size={18} />
-                    </a>
-                )}
-                {member.socials.website && (
-                    <a
-                        href={member.socials.website}
-                        className="text-slate-500 hover:text-emerald-400 transition-colors"
-                    >
-                        <Globe size={18} />
-                    </a>
-                )}
                 {member.socials.instagram && (
-                    <a
-                        href={member.socials.instagram}
-                        className="text-slate-500 hover:text-pink-400 transition-colors"
-                    >
+                    <a href={member.socials.instagram} target="_blank" rel="noreferrer" className="text-slate-500 hover:text-pink-400 transition-colors">
                         <Instagram size={18} />
                     </a>
                 )}
                 {member.socials.email && (
-                    <a
-                        href={member.socials.email}
-                        className="text-slate-500 hover:text-yellow-400 transition-colors"
-                    >
+                    <a href={member.socials.email} className="text-slate-500 hover:text-yellow-400 transition-colors">
                         <Mail size={18} />
                     </a>
                 )}
@@ -351,8 +353,14 @@ const TeamCard = ({ member }) => (
     </div>
 );
 
+// --- UPDATED PROJECT CARD TO BE CLICKABLE ---
 const ProjectCard = ({ project }) => (
-    <div className="bg-slate-900 border border-white/10 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300 group">
+    <a 
+        href={project.url} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="block bg-slate-900 border border-white/10 rounded-xl overflow-hidden hover:shadow-2xl hover:shadow-emerald-500/10 hover:border-emerald-500/30 transition-all duration-300 group cursor-pointer"
+    >
         <div className="p-8">
             <div className="flex justify-between items-start mb-4">
                 <span className="px-3 py-1 rounded text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase">
@@ -360,7 +368,7 @@ const ProjectCard = ({ project }) => (
                 </span>
                 <ExternalLink
                     size={20}
-                    className="text-slate-500 group-hover:text-white transition-colors"
+                    className="text-slate-500 group-hover:text-emerald-400 transition-colors"
                 />
             </div>
 
@@ -387,21 +395,36 @@ const ProjectCard = ({ project }) => (
                 </div>
             </div>
         </div>
-    </div>
+    </a>
 );
 
 /* --------------------------------------------------------------------------------
-   MAIN APP
+   MAIN APP (The Switcher)
    -------------------------------------------------------------------------------- */
 
-export default function BendochProfessional() {
+export default function App() {
+    const [showTerminal, setShowTerminal] = useState(false);
+
+    if (showTerminal) {
+        return (
+            <div className="relative">
+                <button 
+                    onClick={() => setShowTerminal(false)}
+                    className="absolute top-2 right-20 z-50 px-3 py-1 bg-red-600/20 border border-red-500 text-red-400 text-xs font-mono hover:bg-red-600 hover:text-white transition-colors"
+                >
+                    EXIT_TERMINAL
+                </button>
+                <BendochTerminal />
+            </div>
+        );
+    }
+
     return (
         <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-emerald-500/30 selection:text-white">
-            <Navbar />
+            <Navbar onToggleTerminal={() => setShowTerminal(true)} />
 
             {/* HERO SECTION */}
             <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
-                {/* Background Elements */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-emerald-500/20 rounded-[100%] blur-[120px] pointer-events-none opacity-50"></div>
 
                 <div className="max-w-7xl mx-auto text-center relative z-10">
@@ -476,7 +499,7 @@ export default function BendochProfessional() {
             <section id="team" className="py-32 px-6">
                 <div className="max-w-7xl mx-auto">
                     <SectionTitle
-                        title="The Bendoch"
+                        title="The Bendoch Six"
                         subtitle="A unique blend of low-level wizards, hardware strategists, and high-level architects."
                     />
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
