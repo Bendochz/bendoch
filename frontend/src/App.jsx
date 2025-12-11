@@ -20,83 +20,81 @@ import {
 } from "lucide-react";
 
 /* --------------------------------------------------------------------------------
-   DATA CONFIGURATION
+   DATA CONFIGURATION (Updated: Dec 11)
    -------------------------------------------------------------------------------- */
 
 const TEAM = [
     {
         id: "ajay",
         name: "Ajay Giri",
-        role: "Lead Architect & Full Stack",
-        desc: "Bridging the gap between Silicon and Browser. Expert in Rust, C++, React, and Python.",
-        skills: ["Rust", "React", "NextJS", "C++", "Python"],
+        role: "Full Stack & Systems", // Updated per your "Heart of Systems" note
+        desc: "Full-Stack developer with a Systems heart. Bridging high-level Web with low-level Rust.",
+        skills: ["Rust", "Next.js", "System Design", "Compilers", "Docker"],
         socials: {
             github: "https://github.com/imajaygiri",
             email: "mailto:sinexcosecx@gmail.com",
-            linkedin: "#",
-            twitter: "#",
-            website: "#",
-            instagram: "https://www.instagram.com/ajaygiri2023",
+            linkedin: "https://www.linkedin.com/in/ajay-giri-8a8604380/",
+            instagram: "https://www.instagram.com/_ajaygiri",
         },
     },
     {
         id: "vatsal",
         name: "Vatsal Jaiswal",
-        role: "Systems & Kernel Engineer",
+        role: "Systems Programmer",
         desc: "Low-level specialist. Creator of custom Mini CPUs, Shells, and GDB implementations.",
-        skills: ["C", "Assembly", "OS Dev", "GDB", "Linux"],
+        skills: ["C", "Assembly", "OS Dev", "GDB", "Linux Kernel"],
         socials: {
-            github: "https://github.com/vatsal-jaiswal",
-            email: "mailto:vatsal@bendoch.com",
-            linkedin: "#",
+            github: "https://github.com/Vatsalj17",
+            email: "mailto:vatsaljaiswal17@gmail.com",
+            linkedin: "https://www.linkedin.com/in/vatsalj17/",
         },
     },
     {
         id: "aditya_m",
         name: "Aditya Mahore",
-        role: "AI/ML & Game Dev Lead",
-        desc: "The intelligence engine. Building complex AI models and physics-based game engines.",
-        skills: ["Java", "Spring Boot", "AI/ML", "C++", "OpenGL"],
+        role: "Game Dev & Graphics", // Updated: C++ & Java Game
+        desc: "The Graphics Engine. Building 2D adventure games in Java and porting engines to C++.",
+        skills: ["C++", "Java", "OpenGL", "Game Physics", "Spring Boot"],
         socials: {
-            github: "#",
-            email: "mailto:aditya.m@bendoch.com",
-            linkedin: "#",
+            github: "https://github.com/adityacore20",
+            email: "mailto:adityamahore013@gmail.com",
+            linkedin: "https://www.linkedin.com/in/aditya-mahore-671089329/",
         },
     },
     {
         id: "harsh",
         name: "Harsh Raj Singh",
-        role: "Hardware Strategy & ECE",
-        desc: "The hardware interface. Expert in Electronics, Circuit Design, and strategic optimization.",
-        skills: ["ECE", "IoT", "Embedded C", "Circuits", "Strategy"],
+        role: "Embedded Engineer",
+        desc: "The Hardware Interface. Translating software logic into voltage on custom PCBs.",
+        skills: ["Embedded C", "Verilog", "RTOS", "PCB Design", "Arch Linux"],
         socials: {
-            github: "#",
-            email: "mailto:harsh@bendoch.com",
-            linkedin: "#",
+            github: "https://github.com/hrs-temp", // Needs to upload photos!
+            email: "mailto:harsh@bendoch.com", 
+            linkedin: "https://www.linkedin.com/in/harsh-raj-singh-50379630a/",
         },
     },
     {
         id: "aditya_d",
         name: "Aditya Dagar",
-        role: "Mobile & Native Engineering",
-        desc: "Android specialist focusing on native performance, Kotlin, and cross-platform architecture.",
-        skills: ["Android", "Kotlin", "Java", "Python", "C++"],
+        role: "Android & ML Eng", // Updated: ML + Android
+        desc: "Native Android specialist diving deep into on-device Machine Learning models.",
+        skills: ["Kotlin", "Android", "TensorFlow Lite", "Python", "Jetpack"],
         socials: {
-            github: "#",
-            email: "mailto:aditya.d@bendoch.com",
-            linkedin: "#",
+            github: "https://github.com/adidroid",
+            email: "mailto:aditya1dagar@gmail.com",
+            linkedin: "https://www.linkedin.com/in/aditya-dagar-875a29328/",
         },
     },
     {
         id: "akshit",
-        name: "Akshit",
-        role: "Core Systems Engineer",
-        desc: "Connecting the dots between core systems and modern interfaces.",
-        skills: ["Swift", "React", "Systems", "Cloud", "DevOps"],
+        name: "Akshit Kohli",
+        role: "Cloud & Web Ops", // Fixed: Matches his skills
+        desc: "The Infrastructure. Orchestrating scalable cloud deployments and web systems.",
+        skills: ["AWS", "Docker", "React", "Python", "Linux"],
         socials: {
-            github: "#",
-            email: "mailto:akshit@bendoch.com",
-            linkedin: "#",
+            github: "https://github.com/Akshit-kohli",
+            email: "mailto:akshit.kohli2006@gmail.com",
+            linkedin: "https://www.linkedin.com/in/akshit-kohli2006/",
         },
     },
 ];
@@ -104,16 +102,16 @@ const TEAM = [
 const PROJECTS = [
     {
         id: 1,
-        title: "Bendoch CLI Tool",
-        desc: "A Rust-based command line interface for managing distributed company infrastructure.",
+        title: "Repo Manager CLI",
+        desc: "A high-performance Rust terminal tool to manage git repositories.",
         author: "Ajay Giri",
-        tech: "Rust, Clap, Node.js",
+        tech: "Rust, Clap, Systems",
         category: "DevOps",
     },
     {
         id: 2,
-        title: "Custom Instruction Set CPU",
-        desc: "A fully functional Mini CPU design with a custom instruction set and compiler.",
+        title: "RISC-V Simulator",
+        desc: "A custom instruction set architecture implementation and simulation.",
         author: "Vatsal Jaiswal",
         tech: "Verilog, C, Assembly",
         category: "Hardware",
@@ -121,15 +119,15 @@ const PROJECTS = [
     {
         id: 3,
         title: "Iron Health Tracker",
-        desc: "Native Android application for tracking advanced fitness metrics and biometrics.",
+        desc: "Native Android app integrated with predictive health machine learning models.",
         author: "Aditya Dagar",
-        tech: "Kotlin, Jetpack Compose",
+        tech: "Kotlin, ML, Jetpack",
         category: "Mobile",
     },
     {
-        id: 4,
-        title: "Java Physics Engine",
-        desc: "A high-performance 2D/3D physics and rendering engine built from scratch.",
+        id: "game-eng", // Changed ID to avoid conflict
+        title: "2D Adventure Game",
+        desc: "A complete 2D game with custom physics and rendering logic.",
         author: "Aditya Mahore",
         tech: "Java, LWJGL, OpenGL",
         category: "Game Dev",
